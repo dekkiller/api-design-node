@@ -1,8 +1,8 @@
-var express = require('express');
+
+vr express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 var _ = require('lodash');
-
 
 app.use(express.static('client'));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -45,25 +45,6 @@ app.put('/lions/:id', function(req, res) {
     res.json(updatedLion);
   }
 });
-
-app.delete('/lions/:id', function(req, res) {
-  var gone = req.body;
-   
-  var lion = _.findIndex(lions, {id: req.params.id});
-
-  if (!lions[lion]) {
-    res.send();
-  } else {
-  	var updatedLion = _.remove(lions, {id:req.params.id});
-  	res.json(updatedLion);
-  }
-
-
-
-});
-
-
-
 
 app.set('port', (process.env.PORT || 8080));
 
