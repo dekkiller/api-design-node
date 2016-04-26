@@ -47,7 +47,11 @@ app.put('/lions/:id', function(req, res) {
 });
 
 app.delete('/lions/:id', function(req, res) {
-  var gone = req.body;
+  var element = req.body;
+
+  if(element.id) {
+    delete element.id
+  }
    
   var lion = _.findIndex(lions, {id: req.params.id});
 
